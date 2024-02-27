@@ -4,7 +4,7 @@
 
 相關連結：[巴哈文章](https://forum.gamer.com.tw/C.php?bsn=2954&snA=5347&tnum=11)
 
-需安裝 Python 並了解基本使用方式。
+~~需安裝 Python 並了解基本使用方式。~~
 
 ## 使用方式
 
@@ -50,11 +50,11 @@ Output file path: [本資料夾]/source/english.xml
 
 ### 3-1. 更新 xml 翻譯檔案
 
-執行 `python update_xml.py` 即可得到更新過的翻譯檔案 `translated/chinesetraditional.xml`。
+執行 `python update_xml.py` 或直接執行 `update_xml.exe` 即可得到更新過的翻譯檔案 `translated/chinesetraditional.xml`。
 
 ### 3-2. 取得新增的未修正中文翻譯（非必要）
 
-執行 `python find_new_translations.py` 即可取得未修正的新翻譯 `zh_tw_new_translations.csv`。
+執行 `python find_new_translations.py` 或直接執行 `find_new_translations.exe` 即可取得未修正的新翻譯 `zh_tw_new_translations.csv`。
 
 ### 4. 將修正後翻譯轉回 loca 格式
 
