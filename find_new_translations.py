@@ -1,10 +1,12 @@
 import csv
-import xml.etree.ElementTree as ET
 import html
 import os
+import sys
+import xml.etree.ElementTree as ET
 
+BASE_PATH = os.path.dirname(os.path.abspath(sys.argv[0]))
 contexts = {}
-tree = ET.parse(os.path.join('source', 'english.xml'))
+tree = ET.parse(os.path.join(BASE_PATH, 'source', 'english.xml'))
 root = tree.getroot()
 
 for child in root:
@@ -27,7 +29,7 @@ for filename in translated_files:
             translated[row[0]] = html.unescape(row[1])
 
 
-tree = ET.parse(os.path.join('source', 'chinesetraditional.xml'))
+tree = ET.parse(os.path.join(BASE_PATH, 'source', 'chinesetraditional.xml'))
 root = tree.getroot()
 
 new_translations = []
@@ -42,9 +44,12 @@ for child in root:
 
 print(f'New translation: {len(new_translations)} rows.')
 
-with open('zh_tw_new_translations.csv', 'w', newline='', encoding='UTF-8') as write_file:
+with open(os.path.join(BASE_PATH, 'zh_tw_new_translations.csv'), 'w', newline='', encoding='UTF-8') as write_file:
     writer = csv.writer(write_file, delimiter=',', quoting=csv.QUOTE_MINIMAL)
     for row in new_translations:
         writer.writerow(row)
 
-print('write to file: zh_tw_new_translations.csv')
+print(f'write to file: {os.path.join(BASE_PATH, "zh_tw_new_translations.csv")}')
+
+print('Press <ENTER> to exit')
+input()

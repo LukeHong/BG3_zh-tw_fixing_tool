@@ -1,24 +1,27 @@
 import csv
-import xml.etree.ElementTree as ET
 import html
 import os
+import sys
+import xml.etree.ElementTree as ET
+
+BASE_PATH = os.path.dirname(os.path.abspath(sys.argv[0]))
 
 # load translated
-translated_files = os.listdir('translated')
+translated_files = os.listdir(os.path.join(BASE_PATH, 'translated'))
 
 translated = {}
 for filename in translated_files:
     if '.csv' not in filename:
         continue
-    path = os.path.join('translated', filename)
-    with open(path, 'r', encoding='UTF-8') as read_file:
+    file_path = os.path.join(BASE_PATH, 'translated', filename)
+    with open(file_path, 'r', encoding='UTF-8') as read_file:
         reader = csv.reader(read_file, delimiter=',')
         for row in reader:
             translated[row[0]] = html.unescape(row[1])
 
 print(f'Translated: {len(translated)} rows.')
 
-tree = ET.parse(os.path.join('source', 'chinesetraditional.xml'))
+tree = ET.parse(os.path.join(BASE_PATH, 'source', 'chinesetraditional.xml'))
 root = tree.getroot()
 
 not_found = []
@@ -38,5 +41,8 @@ for child in root:
 # print(f'{len(not_found)} rows not found.')
 print(f'{update_count} rows updated.')
 
-tree.write(os.path.join('translated', 'chinesetraditional.xml'), encoding='utf-8', xml_declaration=True)
-print('Write to translated/chinesetraditional.xml')
+tree.write(os.path.join(BASE_PATH, 'translated', 'chinesetraditional.xml'), encoding='utf-8', xml_declaration=True)
+print(f"Write to {os.path.join(BASE_PATH, 'translated', 'chinesetraditional.xml')}")
+
+print('Press <ENTER> to exit')
+input()
