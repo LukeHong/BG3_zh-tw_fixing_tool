@@ -1,6 +1,14 @@
+# python
+venv/
+build
+dist
+*.spec
+
+# for BG3 packages
 data/*
 pak/*
 
+# middle files
 *.csv
 *.pak
 *.xml
