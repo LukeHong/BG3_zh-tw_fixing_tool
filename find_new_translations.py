@@ -16,14 +16,14 @@ del(root)
 
 print(f'English contexts: {len(contexts)} rows')
 
-translated_files = os.listdir('translated')
+translated_files = os.listdir(os.path.join(BASE_PATH, 'translated'))
 
 translated = {}
 for filename in translated_files:
     if '.csv' not in filename:
         continue
-    path = os.path.join('translated', filename)
-    with open(path, 'r', encoding='UTF-8') as read_file:
+    file_path = os.path.join(BASE_PATH, 'translated', filename)
+    with open(file_path, 'r', encoding='UTF-8') as read_file:
         reader = csv.reader(read_file, delimiter=',')
         for row in reader:
             translated[row[0]] = html.unescape(row[1])
