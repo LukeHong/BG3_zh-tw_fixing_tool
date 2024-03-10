@@ -52,11 +52,15 @@ Output file path: [本資料夾]/source/english.xml
 
 ### 3-1. 更新 xml 翻譯檔案
 
-開啟 `Windows PowerShell` 或於終端機執行 `python [本資料夾]/update_xml.py` 或直接執行 `update_xml.exe` 即可得到更新過的翻譯檔案 `translated/chinesetraditional.xml`。
+於終端機執行 `python [本資料夾]/update_xml.py` 或直接執行 `update_xml.exe` 即可得到更新過的翻譯檔案 `translated/chinesetraditional.xml`。
+
+\* **2024/03/10 更新：**　因應原平台僅提供下載 json 格式的翻譯檔，預設改為使用 `translated/*.json` 的檔案，如需使用 csv 格式則需改用 `python [本資料夾]/update_xml.py --csv` 指令。
 
 ### 3-2. 取得新增的未修正中文翻譯（非必要）
 
-開啟 `Windows PowerShell` 或於終端機執行 `python [本資料夾]/find_new_translations.py` 或直接執行 `find_new_translations.exe` 即可取得未修正的新翻譯 `zh_tw_new_translations.csv`。
+於終端機執行 `python [本資料夾]/find_new_translations.py` 或直接執行 `find_new_translations.exe` 即可取得未修正的新翻譯 `zh_tw_new_translations.csv`。
+
+\* **2024/03/10 更新：**　因應原平台僅提供下載 json 格式的翻譯檔，預設改為使用 `translated/*.json` 的檔案，如需使用 csv 格式則需改用 `python [本資料夾]/find_new_translations.py --csv` 指令。
 
 ### 4. 將修正後翻譯轉回 loca 格式
 
